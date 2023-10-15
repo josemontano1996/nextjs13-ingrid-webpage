@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  --color-1: black;
+  --color-2: white;
+  --color-button: #04aa6d;
+  --color-button-alt: #16c58c;
+}
+
+.centering {
+  max-width: 85rem;
+  margin: 0 auto;
+  padding: 0 8vw;
+}
+
+img {
+  display: inline-block;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+}
+
+body {
+  font-size: 16.5px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  display: inline-block;
+}
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+}
+
+address {
+  font-style: normal;
+}
+
+.footer-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+h1 {
+  font-size: 3rem;
+  font-weight: 550;
+}
+h2 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+h3 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+h6 {
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.margin-right-sm {
+  margin-right: 1rem !important;
+}
+
+.btn,
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--color-2);
+  background-color: var(--color-button);
+  padding: 1rem 2rem;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.btn-alt,
+.btn-alt:link,
+.btn-alt:visited {
+  display: inline-block;
+  background-color: var(--color-2);
+  color: var(--color-button);
+  border: 1px solid var(--color-button);
+  padding: 1rem 1.5rem;
+  border-radius: 9px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: var(--color-button-alt);
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
