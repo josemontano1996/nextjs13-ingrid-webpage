@@ -7,6 +7,7 @@ interface Props {
   altText: string;
   optimized?: boolean;
   aspectRatioMeasure?: string;
+  prio?: boolean;
 }
 
 export const Img: FC<Props> = ({
@@ -15,15 +16,16 @@ export const Img: FC<Props> = ({
   widthMeasure = "100%",
   aspectRatioMeasure = "auto",
   optimized = true,
+  prio = false,
 }) => {
   return (
     <Image
       className="fadeIn"
       src={url}
       alt={altText}
-      height={200}
-      width={200}
-      priority
+      height={500}
+      width={500}
+      priority={prio}
       style={{
         width: widthMeasure,
         aspectRatio: aspectRatioMeasure,

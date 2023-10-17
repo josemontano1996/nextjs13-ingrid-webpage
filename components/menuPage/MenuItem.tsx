@@ -5,9 +5,10 @@ import { AddToCartSection } from "./AddToCartSection";
 
 interface Props {
   menuItem: IMenuItem;
+  prioImg: boolean;
 }
 
-export const MenuItem: FC<Props> = ({ menuItem }) => {
+export const MenuItem: FC<Props> = ({ menuItem, prioImg }) => {
   return (
     <li className="flex flex-col items-center justify-between">
       <h6 className="mb-4 italic">{menuItem.name}</h6>
@@ -16,6 +17,7 @@ export const MenuItem: FC<Props> = ({ menuItem }) => {
         altText={menuItem.name}
         aspectRatioMeasure="1/1"
         widthMeasure="70%"
+        prio={prioImg}
       />
       <p className="mx-auto my-2  sm:w-11/12">{menuItem.description}</p>
       <div className="mx-auto mb-4 sm:w-11/12">
@@ -24,9 +26,7 @@ export const MenuItem: FC<Props> = ({ menuItem }) => {
         <p>
           <span className="text-2xl">{menuItem.price} &euro;</span> per serving
         </p>
-        <AddToCartSection
-          minimumRequired={menuItem.minServings}
-        />
+        <AddToCartSection menuItem={menuItem} />
       </div>
     </li>
   );

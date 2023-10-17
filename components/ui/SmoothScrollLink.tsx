@@ -14,8 +14,13 @@ export const SmoothScrollLink: FC<Props> = ({
   classes,
   scrollToId,
 }) => {
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault(); // Prevent the default behavior of anchor element
+    smoothScrollTo(scrollToId);
+  };
+
   return (
-    <a className={classes} onClick={() => smoothScrollTo(scrollToId)}>
+    <a href={`#${scrollToId}`} className={classes} onClick={handleClick}>
       {textContent}
     </a>
   );

@@ -1,26 +1,42 @@
 "use client";
-import { ChangeEvent, FC, useState } from "react";
+
+import { ChangeEvent, FC, useContext, useState } from "react";
+import { CartContext } from "@/context/cart/CartContext";
+import { IMenuItem } from "@/interfaces/IMenuItem";
 
 interface Props {
-  minimumRequired?: number;
+  menuItem: IMenuItem;
 }
 
-
-export const AddToCartSection: FC<Props> = ({ minimumRequired = 0 }) => {
+export const AddToCartSection: FC<Props> = ({ menuItem }) => {
+  const { addProductToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(0);
 
   const onSetQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     const newValue = Number(target.value);
-    if (minimumRequired && newValue < 0) {
+    if (menuItem.minServings && newValue < 0) {
       return;
     }
-    if (minimumRequired && newValue < quantity && newValue < minimumRequired) {
+    if (
+      menuItem.minServings &&
+      newValue < quantity &&
+      newValue < menuItem.minServings
+    ) {
       return setQuantity(0);
     }
-    if (minimumRequired && newValue < minimumRequired) {
-      return setQuantity(minimumRequired);
+    if (menuItem.minServings && newValue < menuItem.minServings) {
+      return setQuantity(menuItem.minServings);
     }
     setQuantity(Number(target.value));
+  };
+
+  const onAddProduct = () => {
+    if (quantity < menuItem.minServings!) {
+      return;
+    }
+    addProductToCart(menuItem, quantity);
+
+    alert("Product added to the cart");
   };
 
   return (
@@ -32,7 +48,10 @@ export const AddToCartSection: FC<Props> = ({ minimumRequired = 0 }) => {
         value={quantity}
         onChange={onSetQuantityChange}
       />
-      <button className="inline-block rounded-md bg-info px-2 py-2 text-sm text-bg">
+      <button
+        className="inline-block rounded-md bg-info px-2 py-2 text-sm text-bg"
+        onClick={onAddProduct}
+      >
         Add to Cart
       </button>
     </div>

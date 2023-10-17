@@ -27,9 +27,24 @@ const MenuPage = async () => {
     <section className="centering">
       <h2 className="text-center italic">Menu</h2>
       <div className="text-center">
-        <MenuList title="Starters" menuItems={starterDishes} />
-        <MenuList title="Main Dishes" menuItems={mainDishes} />
-        <MenuList title="Desserts" menuItems={dessertDishes} />
+        <MenuList
+          id="starters"
+          title="Starters"
+          menuItems={starterDishes}
+          prioImgs={true}
+        />
+        <MenuList
+          id="mainDishes"
+          title="Main Dishes"
+          menuItems={mainDishes}
+          prioImgs={false}
+        />
+        <MenuList
+          id="desserts"
+          title="Desserts"
+          menuItems={dessertDishes}
+          prioImgs={false}
+        />
       </div>
     </section>
   );
