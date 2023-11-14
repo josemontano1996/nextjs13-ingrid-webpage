@@ -1,8 +1,9 @@
 import { Metadata } from "next";
 import NextLink from "next/link";
 import { Img } from "@/components/ui/Img";
-import { ExperiencesSection } from "@/components/ui/homePage/ExperiencesSection";
+
 import { SmoothScrollLink } from "@/components/ui/SmoothScrollLink";
+import { ExperiencesSection } from "@/components/ui/homePage/ExperiencesSection";
 
 export const metadata: Metadata = {
   title: "Home Page",

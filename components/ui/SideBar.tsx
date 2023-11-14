@@ -1,13 +1,14 @@
 "use client";
-
+import { useSelector } from "react-redux";
+import { RootState } from "@/redux/store";
 import NextLink from "next/link";
-import { useContext } from "react";
 
-import { UIContext } from "@/context/ui/UIContext";
 
 export const SideBar = () => {
-  const { isSideMenuOpen } = useContext(UIContext);
-
+  const isSideMenuOpen = useSelector(
+    (state: RootState) => state.ui.isSideMenuOpen,
+  );
+  
   return (
     <nav
       style={{ display: isSideMenuOpen ? "block" : "none" }}

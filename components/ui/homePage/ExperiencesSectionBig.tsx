@@ -4,8 +4,8 @@ import { Img } from "../Img";
 
 export const ExperiencesSectionBig: FC = () => {
   return (
-    <section id="experiences">
-      <h2 className="mt-12 mb-8 text-center">The Experience</h2>
+    <div className="sm:hidden">
+      <h2 className="mb-8 mt-12 text-center">The Experience</h2>
       <div className="centering grid grid-cols-2 items-center gap-8  sm:grid-cols-1 sm:text-center">
         <div>
           <h3>Chef-curated food delivered to you</h3>
@@ -78,6 +78,6 @@ export const ExperiencesSectionBig: FC = () => {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 };

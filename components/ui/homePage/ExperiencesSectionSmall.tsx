@@ -4,7 +4,7 @@ import { Img } from "../Img";
 
 export const ExperiencesSectionSmall: FC = () => {
   return (
-    <section id="experiences" className="centering text-center">
+    <div className="centering hidden text-center sm:block">
       <h2>The Experience</h2>
       <div>
         <h4 className="my-8">Chef-curated food delivered to you</h4>
@@ -77,6 +77,6 @@ export const ExperiencesSectionSmall: FC = () => {
           </NextLink>
         </div>
       </div>
-    </section>
+    </div>
   );
 };

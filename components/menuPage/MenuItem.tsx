@@ -26,8 +26,8 @@ export const MenuItem: FC<Props> = ({ menuItem, prioImg }) => {
         <p>
           <span className="text-2xl">{menuItem.price} &euro;</span> per serving
         </p>
-        <AddToCartSection menuItem={menuItem} />
       </div>
+        <AddToCartSection menuItem={menuItem} />
     </li>
   );
 };

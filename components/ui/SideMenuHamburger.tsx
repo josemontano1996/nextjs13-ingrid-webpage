@@ -1,11 +1,12 @@
 "use client";
-import { UIContext } from "@/context/ui/UIContext";
-import { useContext } from "react";
+
+import { toggleSideMenu } from "@/redux/slices/uiSlice";
+import { useDispatch } from "react-redux";
 
 export const SideMenuHamburger = () => {
-  const { toggleSideMenu } = useContext(UIContext);
+  const dispatch = useDispatch();
   return (
-    <div onClick={toggleSideMenu}>
+    <div onClick={() => dispatch(toggleSideMenu())}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -1,7 +1,6 @@
 "use client";
 
-import { ChangeEvent, FC, useContext, useState } from "react";
-import { CartContext } from "@/context/cart/CartContext";
+import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import { IMenuItem } from "@/interfaces/IMenuItem";
 
 interface Props {
@@ -9,7 +8,6 @@ interface Props {
 }
 
 export const AddToCartSection: FC<Props> = ({ menuItem }) => {
-  const { addProductToCart } = useContext(CartContext);
   const [quantity, setQuantity] = useState<number>(0);
 
   const onSetQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -30,17 +28,18 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
     setQuantity(Number(target.value));
   };
 
-  const onAddProduct = () => {
+  const onFormSubmit = () => {
     if (quantity < menuItem.minServings!) {
       return;
     }
-    addProductToCart(menuItem, quantity);
+
+    /*   addProductToCart(menuItem, quantity); */
 
     alert("Product added to the cart");
   };
 
   return (
-    <div className="mt-2 ">
+    <form className="mt-2" onSubmit={onFormSubmit}>
       <label>Quantity</label>
       <input
         type="number"
@@ -48,12 +47,9 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
         value={quantity}
         onChange={onSetQuantityChange}
       />
-      <button
-        className="inline-block rounded-md bg-info px-2 py-2 text-sm text-bg"
-        onClick={onAddProduct}
-      >
+      <button className="inline-block rounded-md bg-info px-2 py-2 text-sm text-bg">
         Add to Cart
       </button>
-    </div>
+    </form>
   );
 };
