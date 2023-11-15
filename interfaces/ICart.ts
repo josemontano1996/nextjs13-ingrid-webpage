@@ -5,7 +5,7 @@ export interface ICartProduct extends IMenuItem {
 }
 
 export interface IShippingAddress {
-  irstName: string;
+  firstName: string;
   lastName: string;
   address: string;
   address2?: string;

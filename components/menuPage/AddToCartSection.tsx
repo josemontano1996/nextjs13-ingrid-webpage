@@ -3,14 +3,19 @@
 import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import { IMenuItem } from "@/interfaces/IMenuItem";
 
+import { useCartStore } from "@/hooks/useCartStore";
+import { ICartProduct } from "@/interfaces/ICart";
+
 interface Props {
   menuItem: IMenuItem;
 }
 
 export const AddToCartSection: FC<Props> = ({ menuItem }) => {
+  const { cart, updateCart } = useCartStore();
   const [quantity, setQuantity] = useState<number>(0);
 
   const onSetQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+    //Aqui quiero leer la cantidad en el estado de redux y modificarla
     const newValue = Number(target.value);
     if (menuItem.minServings && newValue < 0) {
       return;
@@ -28,18 +33,19 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
     setQuantity(Number(target.value));
   };
 
-  const onFormSubmit = () => {
-    if (quantity < menuItem.minServings!) {
+  const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (quantity < 0) {
       return;
     }
 
-    /*   addProductToCart(menuItem, quantity); */
+    const cartProduct: ICartProduct = { ...menuItem, quantity };
 
-    alert("Product added to the cart");
+    updateCart(cartProduct);
   };
 
   return (
-    <form className="mt-2" onSubmit={onFormSubmit}>
+    <form className="mt-2" onSubmit={(e) => onFormSubmit(e)}>
       <label>Quantity</label>
       <input
         type="number"

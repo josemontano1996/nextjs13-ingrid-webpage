@@ -1,14 +1,11 @@
 "use client";
-import { useSelector } from "react-redux";
-import { RootState } from "@/redux/store";
-import NextLink from "next/link";
 
+import NextLink from "next/link";
+import { useUiStore } from "@/hooks/useUiStore";
 
 export const SideBar = () => {
-  const isSideMenuOpen = useSelector(
-    (state: RootState) => state.ui.isSideMenuOpen,
-  );
-  
+  const { isSideMenuOpen } = useUiStore();
+
   return (
     <nav
       style={{ display: isSideMenuOpen ? "block" : "none" }}
