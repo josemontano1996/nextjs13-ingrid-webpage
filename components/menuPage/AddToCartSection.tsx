@@ -3,7 +3,6 @@
 import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import { IMenuItem } from "@/interfaces/IMenuItem";
 
-import { useCartStore } from "@/hooks/useCartStore";
 import { ICartProduct } from "@/interfaces/ICart";
 
 interface Props {
@@ -11,7 +10,6 @@ interface Props {
 }
 
 export const AddToCartSection: FC<Props> = ({ menuItem }) => {
-  const { cart, updateCart } = useCartStore();
   const [quantity, setQuantity] = useState<number>(0);
 
   const onSetQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
@@ -40,8 +38,6 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
     }
 
     const cartProduct: ICartProduct = { ...menuItem, quantity };
-
-    updateCart(cartProduct);
   };
 
   return (

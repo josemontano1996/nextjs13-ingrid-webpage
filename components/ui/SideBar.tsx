@@ -1,10 +1,12 @@
 "use client";
 
+import { useContext } from "react";
 import NextLink from "next/link";
-import { useUiStore } from "@/hooks/useUiStore";
+import { UIContext } from "@/context/ui/UIContext";
+
 
 export const SideBar = () => {
-  const { isSideMenuOpen } = useUiStore();
+  const { isSideMenuOpen } = useContext(UIContext);
 
   return (
     <nav

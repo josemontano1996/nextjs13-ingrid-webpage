@@ -4,7 +4,7 @@ import { Cormorant } from "next/font/google";
 import { NavBar } from "@/components/ui/NavBar";
 import { Footer } from "@/components/ui/Footer";
 import { SideBar } from "@/components/ui/SideBar";
-import { StoreProvider } from "@/redux/StoreProvider";
+import { UIProvider } from "@/context/ui/UIProvider";
 
 const cormorant = Cormorant({ subsets: ["latin"] });
 
@@ -14,17 +14,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <StoreProvider>
+    <UIProvider>
       <html lang="en">
         <body className={cormorant.className}>
-            <NavBar />
-            <SideBar />
-            <div className="grid min-h-screen grid-rows-footer">
-              <main>{children}</main>
-              <Footer />
-            </div>
+          <NavBar />
+          <SideBar />
+          <div className="grid min-h-screen grid-rows-footer">
+            <main>{children}</main>
+            <Footer />
+          </div>
         </body>
       </html>
-    </StoreProvider>
+    </UIProvider>
   );
 }

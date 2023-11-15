@@ -1,9 +1,10 @@
 "use client";
 
-import { useUiStore } from "@/hooks/useUiStore";
+import { UIContext } from "@/context/ui/UIContext";
+import { useContext } from "react";
 
 export const SideMenuHamburger = () => {
-  const { toggleSideMenu } = useUiStore();
+  const { toggleSideMenu } = useContext(UIContext);
   return (
     <div onClick={toggleSideMenu}>
       <svg
