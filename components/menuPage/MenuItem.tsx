@@ -10,7 +10,7 @@ interface Props {
 
 export const MenuItem: FC<Props> = ({ menuItem, prioImg }) => {
   return (
-    <li className="flex flex-col items-center justify-between">
+    <li className="mt-4 flex flex-col items-center justify-between rounded-2xl border border-info py-4 px-4 hover:shadow-2xl">
       <h6 className="mb-4 italic">{menuItem.name}</h6>
       <Img
         url={menuItem.image}
@@ -19,15 +19,17 @@ export const MenuItem: FC<Props> = ({ menuItem, prioImg }) => {
         widthMeasure="70%"
         prio={prioImg}
       />
-      <p className="mx-auto my-2  sm:w-11/12">{menuItem.description}</p>
+      <p className="mx-auto my-2 text-lg sm:w-11/12">{menuItem.description}</p>
       <div className="mx-auto mb-4 sm:w-11/12">
-        <p className="text-sm">Allergens: {menuItem.allergens}</p>
-        <p className="text-sm">Min. {menuItem.minServings} serving</p>
+        {menuItem.allergens?.length !== 0 && (
+          <p>Allergens: {menuItem.allergens!.join(", ")}.</p>
+        )}
         <p>
           <span className="text-2xl">{menuItem.price} &euro;</span> per serving
         </p>
+        <p className="text-sm">Min. {menuItem.minServings} serving</p>
       </div>
-        <AddToCartSection menuItem={menuItem} />
+      <AddToCartSection menuItem={menuItem} />
     </li>
   );
 };

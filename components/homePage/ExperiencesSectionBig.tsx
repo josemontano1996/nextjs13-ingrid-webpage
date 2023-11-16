@@ -1,6 +1,6 @@
 import { FC } from "react";
 import NextLink from "next/link";
-import { Img } from "../Img";
+import { Img } from "../ui/Img";
 
 export const ExperiencesSectionBig: FC = () => {
   return (

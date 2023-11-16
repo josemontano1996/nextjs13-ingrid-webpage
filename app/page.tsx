@@ -3,7 +3,7 @@ import NextLink from "next/link";
 import { Img } from "@/components/ui/Img";
 
 import { SmoothScrollLink } from "@/components/ui/SmoothScrollLink";
-import { ExperiencesSection } from "@/components/ui/homePage/ExperiencesSection";
+import { ExperiencesSection } from "@/components/homePage/ExperiencesSection";
 
 export const metadata: Metadata = {
   title: "Home Page",
@@ -28,7 +28,7 @@ export default function HomePage() {
                   Check our Menu
                 </NextLink>
               </div>
-              <div>
+              <div className="sm:hidden">
                 <SmoothScrollLink
                   textContent="Learn more"
                   classes="btn-alt"

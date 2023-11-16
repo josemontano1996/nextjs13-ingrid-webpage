@@ -12,7 +12,7 @@ interface Props {
 export const AddToCartSection: FC<Props> = ({ menuItem }) => {
   const [quantity, setQuantity] = useState<number>(0);
 
-  const onSetQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+  const onQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
     //Aqui quiero leer la cantidad en el estado de redux y modificarla
     const newValue = Number(target.value);
     if (menuItem.minServings && newValue < 0) {
@@ -29,15 +29,12 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
       return setQuantity(menuItem.minServings);
     }
     setQuantity(Number(target.value));
-  };
+  }
 
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (quantity < 0) {
-      return;
-    }
-
-    const cartProduct: ICartProduct = { ...menuItem, quantity };
+  
+  
   };
 
   return (
@@ -47,11 +44,12 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
         type="number"
         className="border-gray mx-2 w-12 border text-center"
         value={quantity}
-        onChange={onSetQuantityChange}
+        onChange={onQuantityChange}
       />
       <button className="inline-block rounded-md bg-info px-2 py-2 text-sm text-bg">
-        Add to Cart
+        Update to Cart
       </button>
     </form>
   );
 };
+
