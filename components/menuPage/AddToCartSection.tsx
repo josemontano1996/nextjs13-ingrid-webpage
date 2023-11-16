@@ -1,19 +1,25 @@
 "use client";
 
 import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
+import { CartContext } from "@/context/cart/CartContext";
 import { IMenuItem } from "@/interfaces/IMenuItem";
-
 import { ICartProduct } from "@/interfaces/ICart";
 
 interface Props {
-  menuItem: IMenuItem;
+  menuItem: ICartProduct;
 }
 
 export const AddToCartSection: FC<Props> = ({ menuItem }) => {
-  const [quantity, setQuantity] = useState<number>(0);
+  const { cart, updateCart } = useContext(CartContext);
+
+  const [quantity, setQuantity] = useState<number>(
+    cart?.find((item) => item._id === menuItem._id)?.quantity || 0,
+  );
 
   const onQuantityChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
-    //Aqui quiero leer la cantidad en el estado de redux y modificarla
+    //in this code I make a number jump, if the user decreses the quantity under
+    //the minServings it automatically jumps to 0, if it increses it is automatically
+    //set to minServings
     const newValue = Number(target.value);
     if (menuItem.minServings && newValue < 0) {
       return;
@@ -29,12 +35,23 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
       return setQuantity(menuItem.minServings);
     }
     setQuantity(Number(target.value));
-  }
+  };
 
   const onFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-  
-  
+
+    //0 will delete the item in the state
+    if (
+      menuItem.minServings &&
+      quantity > 0 &&
+      quantity < menuItem.minServings
+    ) {
+      return;
+    }
+
+    menuItem.quantity = quantity;
+
+    updateCart(menuItem);
   };
 
   return (
@@ -52,4 +69,3 @@ export const AddToCartSection: FC<Props> = ({ menuItem }) => {
     </form>
   );
 };
-
