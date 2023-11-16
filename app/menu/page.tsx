@@ -1,7 +1,8 @@
 import { Metadata } from "next";
 import { MenuList } from "@/components/menuPage/MenuList";
 import { IMenuItem } from "@/interfaces/IMenuItem";
-import { getProductsServer } from "@/lib/getProductsServer";
+import { getProductsServer } from "@/database/dbProducts";
+
 
 export const revalidate = 86400;
 

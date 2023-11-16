@@ -2,7 +2,6 @@
 
 import { ChangeEvent, FC, FormEvent, useContext, useState } from "react";
 import { CartContext } from "@/context/cart/CartContext";
-import { IMenuItem } from "@/interfaces/IMenuItem";
 import { ICartProduct } from "@/interfaces/ICart";
 
 interface Props {

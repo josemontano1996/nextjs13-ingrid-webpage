@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import NextLink from "next/link";
 import { UIContext } from "@/context/ui/UIContext";
-
+import { SignInButton } from "./SignInButton";
 
 export const SideBar = () => {
   const { isSideMenuOpen } = useContext(UIContext);
@@ -11,7 +11,7 @@ export const SideBar = () => {
   return (
     <nav
       style={{ display: isSideMenuOpen ? "block" : "none" }}
-      className="fixed right-0 top-0 z-40 mt-vh6 h-screen bg-bg p-8 "
+      className="fixed right-0 top-0 z-40 bg-bg p-8 "
     >
       <div className="mt-4" style={{ display: "none" }}>
         {/* Admin */}
@@ -158,7 +158,7 @@ export const SideBar = () => {
           <li>
             <NextLink
               href="/user/orders"
-              className="flex content-between gap-4  text-xl"
+              className="flex content-between gap-4 text-xl"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -177,77 +177,8 @@ export const SideBar = () => {
               My orders
             </NextLink>
           </li>
-        </ul>
-      </div>
-      <div className="mt-4">
-        {/* Authentication */}
-        <h6>Account</h6>
-        <ul>
-          <li>
-            <NextLink
-              href="/auth/login"
-              className="flex content-between gap-4  text-xl"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Log in
-            </NextLink>
-          </li>
-          <li>
-            <NextLink
-              href="/auth/register"
-              className="my-2 flex content-between  gap-4 text-xl"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M19 7.5v3m0 0v3m0-3h3m-3 0h-3m-2.25-4.125a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zM4 19.235v-.11a6.375 6.375 0 0112.75 0v.109A12.318 12.318 0 0110.374 21c-2.331 0-4.512-.645-6.374-1.766z"
-                />
-              </svg>
-              Register
-            </NextLink>
-          </li>
-          <li>
-            <a
-              href="/user/logout"
-              className="flex content-between gap-4  text-xl"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="h-6 w-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9"
-                />
-              </svg>
-              Log out
-            </a>
+          <li className="mt-1">
+            <SignInButton />
           </li>
         </ul>
       </div>
